@@ -23,39 +23,43 @@ const AnimationDemo = () => {
     // Animate the box first
     tl.to(boxRef1.current, {
       scale: 0.8,
-      duration: 1,
-    });
-    tl.to(boxRef1.current, {
-      duration: 1.5,
-      x: -350,
-      y: -120,
+      duration: 1.3,
+      x: -380,
+      y: -55,
       ease: "back.inOut",
+    });
+    // tl.to(boxRef1.current, {
+    //   duration: 1,
+    //   x: -380,
+    //   y: -55,
+    //   ease: "back.out",
+    // })
+    tl.to(form1.current, {
+      webkitFilter: "blur(2px)",
+      pointerEvents: "none",
+      duration: 0.5,
     })
-      .to(form1.current, {
-        webkitFilter: "blur(2px)",
-        pointerEvents: "none",
-      })
       // Animate the first line (line1) after the box animation
       .to(line1Ref.current, {
-        duration: 1,
+        duration: 0.5,
         height: 150,
         ease: "power1.out",
       })
       // Animate the second line (line2) after the first line animation
       .to(line2Ref.current, {
-        duration: 1,
+        duration: 0.5,
         width: 200,
         ease: "power1.out",
       })
       .to(boxRef2.current, {
         pointerEvents: "all",
         opacity: 1,
-        duration: 1,
+        duration: 0.5,
         ease: "back.out",
       })
       .to(boxRef2.current, {
         scale: 1.8,
-        duration: 1,
+        duration: 0.7,
         y: -250,
         x: 100,
         width: 350,
@@ -72,7 +76,7 @@ const AnimationDemo = () => {
     tl2
       .to(boxRef2.current, {
         scale: 1,
-        duration: 1,
+        duration: 0.8,
         y: 50,
         x: -10,
         ease: "back.inOut",
@@ -82,12 +86,12 @@ const AnimationDemo = () => {
         pointerEvents: "none",
       })
       .to(line3Ref.current, {
-        duration: 1,
+        duration: 0.5,
         height: 150,
         ease: "power1.out",
       })
       .to(line4Ref.current, {
-        duration: 1,
+        duration: 0.5,
         width: 200,
         ease: "power1.out",
       })
@@ -95,14 +99,14 @@ const AnimationDemo = () => {
         pointerEvents: "all",
         scale: 1,
         opacity: 1,
-        duration: 1,
+        duration: 0.7,
         ease: "power1.out",
       });
     tl2.to(boxRef3.current, {
       scale: 2,
       x: -200,
       y: 100,
-      duration: 1,
+      duration: 0.8,
       ease: "back.out",
     });
   };
@@ -112,20 +116,40 @@ const AnimationDemo = () => {
     const tl3 = gsap.timeline();
 
     tl3
+      .to(line1Ref.current, {
+        backgroundColor: "transparent",
+        duration: 0,
+      })
+      .to(line2Ref.current, {
+        backgroundColor: "transparent",
+        duration: 0,
+      })
+      .to(line3Ref.current, {
+        backgroundColor: "transparent",
+        duration: 0,
+      })
+      .to(line4Ref.current, {
+        backgroundColor: "transparent",
+        duration: 0,
+      })
       .to(boxRef3.current, {
         pointerEvents: "all",
         scale: 1,
-        x: 0,
-        y: 0,
+        x: 30,
+        y: 382,
         ease: "power1.out",
       })
       .to(boxRef2.current, {
         pointerEvents: "all",
         ease: "power1.out",
+        x: 55,
+        y: -337,
+        width: "unset",
       })
       .to(boxRef1.current, {
         pointerEvents: "all",
         ease: "power1.out",
+        scale: 1,
       })
       .to(form2.current, {
         webkitFilter: "blur(0px)",
@@ -138,7 +162,7 @@ const AnimationDemo = () => {
   };
 
   return (
-    <div ref={boxRef1} className="animated-box">
+    <div ref={boxRef1} className="animated-box box-1">
       <form onSubmit={handleForm1Submit}>
         <div className="form-wrapper" ref={form1}>
           <div className="form-item">
