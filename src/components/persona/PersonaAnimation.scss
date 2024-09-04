@@ -1,0 +1,187 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ededed;
+  overflow: hidden;
+  .cards-wrapper {
+    display: flex;
+    width: 80%;
+    gap: 30px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    padding-top: 150px;
+    .card {
+      --main-color: #000;
+      --bg-color: #9b53e0;
+      font-family: "Helvetica Neue", sans-serif;
+      flex: 1 1 auto;
+      padding: 25px;
+      background: var(--bg-color);
+      border-radius: 20px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+      .card-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .card-wrapper-acounts {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        z-index: 1;
+        cursor: pointer;
+        & > div {
+          &:nth-child(2) {
+            position: absolute;
+            left: 25px;
+            z-index: -1;
+          }
+          &:nth-child(3) {
+            position: absolute;
+            left: 50px;
+            z-index: -2;
+          }
+        }
+      }
+      .card-score {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--main-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: #ffffff;
+      }
+      .card-menu {
+        width: 40px;
+        height: 40px;
+        background: #f6db96;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .card-title {
+        margin-top: 50px;
+        font-weight: 900;
+        font-size: 25px;
+        color: #ffffff;
+      }
+      .card-subtitle {
+        margin-top: 15px;
+        font-weight: 400;
+        font-size: 15px;
+        color: #ffffff;
+      }
+    }
+  }
+  .bg-gradient {
+    background-image: radial-gradient(
+      circle,
+      #9b53e0,
+      #b47cea,
+      #cca4f2,
+      #e2cbf9,
+      #f9f3ff
+    );
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.5;
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
+}
+
+.desc-wrapper {
+  position: relative;
+  z-index: 2;
+  .title {
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 52px;
+    color: #000000;
+    text-align: center;
+  }
+  .desc {
+    max-width: 700px;
+    font-weight: 500;
+    font-size: 22px;
+    color: #000000;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  button {
+    --primary-color: #000000;
+    --secondary-color: #fff;
+    --hover-color: #9b53e0;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    width: unset;
+    margin: 0 auto;
+  }
+
+  button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+
+  button .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+
+  button:hover {
+    background-color: var(--hover-color);
+  }
+
+  button:hover .arrow {
+    background: var(--secondary-color);
+  }
+
+  button:hover .arrow:before {
+    right: 0;
+  }
+}
