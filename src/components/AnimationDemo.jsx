@@ -14,84 +14,93 @@ const AnimationDemo = () => {
   const line3Ref = useRef(null);
   const line4Ref = useRef(null);
 
+  // Store timelines to reverse animations
+  const tl1 = useRef(gsap.timeline({ paused: true }));
+  const tl2 = useRef(gsap.timeline({ paused: true }));
+  const tl3 = useRef(gsap.timeline({ paused: true }));
+
   const handleForm1Submit = (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    // Create a GSAP timeline for the first form
-    const tl = gsap.timeline();
-
     // Animate the box first
-    tl.to(boxRef1.current, {
-      scale: 0.8,
-      duration: 1.3,
-      x: -380,
-      y: -55,
-      ease: "back.inOut",
-    });
-    // tl.to(boxRef1.current, {
-    //   duration: 1,
-    //   x: -380,
-    //   y: -55,
-    //   ease: "back.out",
-    // })
-    tl.to(form1.current, {
-      webkitFilter: "blur(2px)",
-      pointerEvents: "none",
-      duration: 0.5,
-    })
-      // Animate the first line (line1) after the box animation
+    tl1.current
+      .to(
+        boxRef1.current,
+        {
+          scale: 0.8,
+          duration: 0.7,
+          x: -380,
+          y: -55,
+          ease: "back.inOut",
+        },
+        0
+      )
+      .to(
+        form1.current,
+        {
+          webkitFilter: "blur(2px)",
+          pointerEvents: "none",
+          duration: 0.7,
+        },
+        0
+      )
       .to(line1Ref.current, {
-        duration: 0.5,
+        duration: 0.3,
         height: 150,
         ease: "power1.out",
       })
-      // Animate the second line (line2) after the first line animation
       .to(line2Ref.current, {
-        duration: 0.5,
+        duration: 0.3,
         width: 200,
         ease: "power1.out",
       })
       .to(boxRef2.current, {
         pointerEvents: "all",
         opacity: 1,
-        duration: 0.5,
-        ease: "back.out",
+        duration: 0.3,
+        ease: "back.inOut",
       })
       .to(boxRef2.current, {
         scale: 1.8,
         duration: 0.7,
-        y: -250,
-        x: 100,
+        y: -320,
+        x: 140,
         width: 350,
-        ease: "back.out",
+        ease: "back.inOut",
       });
+    tl1.current.play();
   };
 
   const handleForm2Submit = (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    // Create a GSAP timeline for the second form
-    const tl2 = gsap.timeline();
-
-    tl2
-      .to(boxRef2.current, {
-        scale: 1,
-        duration: 0.8,
-        y: 50,
-        x: -10,
-        ease: "back.inOut",
-      })
-      .to(form2.current, {
-        webkitFilter: "blur(2px)",
-        pointerEvents: "none",
-      })
+    tl2.current
+      .to(
+        boxRef2.current,
+        {
+          scale: 1,
+          duration: 0.8,
+          y: -10,
+          x: -10,
+          ease: "back.inOut",
+        },
+        0
+      )
+      .to(
+        form2.current,
+        {
+          webkitFilter: "blur(2px)",
+          pointerEvents: "none",
+        },
+        0
+      )
       .to(line3Ref.current, {
-        duration: 0.5,
+        duration: 0.3,
         height: 150,
         ease: "power1.out",
       })
       .to(line4Ref.current, {
-        duration: 0.5,
+        duration: 0.3,
         width: 200,
         ease: "power1.out",
       })
@@ -100,22 +109,22 @@ const AnimationDemo = () => {
         scale: 1,
         opacity: 1,
         duration: 0.7,
-        ease: "power1.out",
+        ease: "back.inOut",
+      })
+      .to(boxRef3.current, {
+        scale: 2,
+        x: -200,
+        y: 100,
+        duration: 0.7,
+        ease: "back.inOut",
       });
-    tl2.to(boxRef3.current, {
-      scale: 2,
-      x: -200,
-      y: 100,
-      duration: 0.8,
-      ease: "back.out",
-    });
+
+    tl2.current.play();
   };
 
   const handleForm3Submit = (event) => {
     event.preventDefault();
-    const tl3 = gsap.timeline();
-
-    tl3
+    tl3.current
       .to(line1Ref.current, {
         backgroundColor: "transparent",
         duration: 0,
@@ -137,68 +146,87 @@ const AnimationDemo = () => {
         scale: 1,
         x: 30,
         y: 382,
-        ease: "power1.out",
+        duration: 0.7,
+        ease: "back.out",
       })
-      .to(boxRef2.current, {
-        pointerEvents: "all",
-        ease: "power1.out",
-        x: 55,
-        y: -337,
-        width: "unset",
-      })
+      .to(
+        boxRef2.current,
+        {
+          pointerEvents: "all",
+          ease: "power1.out",
+          x: 55,
+          y: -385,
+          width: "unset",
+        },
+        0
+      )
+      .to(
+        [form2.current, form1.current],
+        {
+          webkitFilter: "blur(0px)",
+          pointerEvents: "all",
+        },
+        0
+      )
       .to(boxRef1.current, {
         pointerEvents: "all",
         ease: "power1.out",
         scale: 1,
-      })
-      .to(form2.current, {
-        webkitFilter: "blur(0px)",
-        pointerEvents: "all",
-      })
-      .to(form1.current, {
-        webkitFilter: "blur(0px)",
-        pointerEvents: "all",
       });
+
+    tl3.current.play();
+  };
+
+  // Handle "Back" button clicks to reverse animations
+  const handleBack1Click = () => {
+    tl1.current.reverse();
+  };
+
+  const handleBack2Click = () => {
+    tl2.current.reverse();
   };
 
   return (
     <div ref={boxRef1} className="animated-box box-1">
       <form onSubmit={handleForm1Submit}>
         <div className="form-wrapper" ref={form1}>
+          <h1 className="form-title">Signup Info</h1>
           <div className="form-item">
-            <label htmlFor="first-name" className="form-item-label">
-              First Name:
+            <label htmlFor="email" className="form-item-label">
+              Email Address:
             </label>
             <input
-              type="text"
+              type="email"
               className="input"
-              id="first-name"
-              placeholder="Enter your first name"
+              id="email"
+              placeholder="Enter your email address"
             />
           </div>
           <div className="form-item">
-            <label htmlFor="last-name" className="form-item-label">
-              Last Name:
+            <label htmlFor="password" className="form-item-label">
+              Password:
             </label>
             <input
-              type="text"
+              type="password"
               className="input"
-              id="last-name"
-              placeholder="Enter your last name"
+              id="password"
+              placeholder="Enter password"
             />
           </div>
           <div className="form-item">
-            <label htmlFor="contact" className="form-item-label">
-              Contact Number:
+            <label htmlFor="confirm-password" className="form-item-label">
+              Confirm Password:
             </label>
             <input
-              type="text"
+              type="password"
               className="input"
-              id="contact"
-              placeholder="Enter your contact number"
+              id="confirm-password"
+              placeholder="Enter password"
             />
           </div>
-          <button type="submit">Submit</button>
+          <div className="btn-wrapper">
+            <button type="submit">Next</button>
+          </div>
         </div>
       </form>
       {/* Line elements to animate */}
@@ -207,15 +235,27 @@ const AnimationDemo = () => {
           <div ref={boxRef2} className="animated-box box-2">
             <form onSubmit={handleForm2Submit}>
               <div className="form-wrapper" ref={form2}>
+                <h1 className="form-title">Personal Info</h1>
+                <div className="form-item">
+                  <label htmlFor="user-name" className="form-item-label">
+                    User Name:
+                  </label>
+                  <input
+                    type="input"
+                    className="input"
+                    id="user-name"
+                    placeholder="Enter your user name"
+                  />
+                </div>
                 <div className="form-item">
                   <label htmlFor="first-name" className="form-item-label">
                     First Name:
                   </label>
                   <input
-                    type="text"
+                    type="input"
                     className="input"
                     id="first-name"
-                    placeholder="Enter your first name"
+                    placeholder="Enter first name"
                   />
                 </div>
                 <div className="form-item">
@@ -223,65 +263,84 @@ const AnimationDemo = () => {
                     Last Name:
                   </label>
                   <input
-                    type="text"
+                    type="input"
                     className="input"
                     id="last-name"
-                    placeholder="Enter your last name"
+                    placeholder="Enter last name"
                   />
                 </div>
-                <div className="form-item">
-                  <label htmlFor="contact" className="form-item-label">
-                    Contact Number:
-                  </label>
-                  <input
-                    type="text"
-                    className="input"
-                    id="contact"
-                    placeholder="Enter your contact number"
-                  />
+                <div className="btn-wrapper">
+                  {/* Back button with reversal functionality */}
+                  <button
+                    type="button"
+                    className="back-btn"
+                    onClick={handleBack1Click}
+                  >
+                    Back
+                  </button>
+                  <button type="submit">Next</button>
                 </div>
-                <button type="submit">Submit</button>
               </div>
             </form>
+
             <div ref={line3Ref} className="line3">
               <div ref={line4Ref} className="line4">
                 <div ref={boxRef3} className="animated-box box-3">
                   <form onSubmit={handleForm3Submit}>
                     <div className="form-wrapper" ref={form3}>
+                      <h1 className="form-title">Professional Info</h1>
                       <div className="form-item">
-                        <label htmlFor="first-name" className="form-item-label">
-                          First Name:
+                        <label
+                          htmlFor="current-comapny"
+                          className="form-item-label"
+                        >
+                          Current Comapny:
                         </label>
                         <input
-                          type="text"
+                          type="input"
                           className="input"
-                          id="first-name"
-                          placeholder="Enter your first name"
+                          id="current-comapny"
+                          placeholder="Enter your current comapny"
                         />
                       </div>
                       <div className="form-item">
-                        <label htmlFor="last-name" className="form-item-label">
-                          Last Name:
+                        <label
+                          htmlFor="total-experience"
+                          className="form-item-label"
+                        >
+                          Total Experience:
                         </label>
                         <input
-                          type="text"
+                          type="input"
                           className="input"
-                          id="last-name"
-                          placeholder="Enter your last name"
+                          id="total-experience"
+                          placeholder="Enter total experience"
                         />
                       </div>
                       <div className="form-item">
-                        <label htmlFor="contact" className="form-item-label">
-                          Contact Number:
+                        <label
+                          htmlFor="designation"
+                          className="form-item-label"
+                        >
+                          Designation:
                         </label>
                         <input
-                          type="text"
+                          type="input"
                           className="input"
-                          id="contact"
-                          placeholder="Enter your contact number"
+                          id="designation"
+                          placeholder="Enter designation"
                         />
                       </div>
-                      <button type="submit">Submit</button>
+                      <div className="btn-wrapper">
+                        <button
+                          type="button"
+                          className="back-btn"
+                          onClick={handleBack2Click}
+                        >
+                          Back
+                        </button>
+                        <button type="submit">Done</button>
+                      </div>
                     </div>
                   </form>
                   <div ref={line3Ref} className="line3">

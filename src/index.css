@@ -38,18 +38,26 @@ h1 {
 
 button {
   width: 100%;
-  border-radius: 8px;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #5C5CFF;
+  background-color: #0e1926;
   cursor: pointer;
   outline: none;
   border: none;
   transition: all 0.3s ease;
 }
 
+
 button:hover {
-  background-color: #222ac3;
+  background-color: #2a2a2a;
+}
+
+button.back-btn {
+  background-color: #26465d;
+}
+
+button.back-btn:hover {
+  background-color: #3f6885;
 }
