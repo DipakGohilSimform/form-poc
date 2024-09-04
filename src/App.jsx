@@ -1,5 +1,4 @@
 import "./App.css";
-import AnimationDemo from "./components/AnimationDemo";
 import PersonaAnimation from "./components/persona/PersonaAnimation";
 
 function App() {
