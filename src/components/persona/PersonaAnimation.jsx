@@ -150,30 +150,30 @@ function PersonaAnimation() {
               }}
             >
               <div className="input-group">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="userName">User Name</label>
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter email address"
+                  type="text"
+                  name="userName"
+                  id="userName"
+                  placeholder="Enter user name"
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="fistName">First Name</label>
                 <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Enter password"
+                  type="text"
+                  name="fistName"
+                  id="fistName"
+                  placeholder="Enter first name"
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="lastName">Last Name</label>
                 <input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  placeholder="Enter password again"
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="Enter last name"
                 />
               </div>
               <div className="btn-wrapper">
@@ -204,30 +204,30 @@ function PersonaAnimation() {
               }}
             >
               <div className="input-group">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="currentCompany">Current Company</label>
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter email address"
+                  type="text"
+                  name="currentCompany"
+                  id="currentCompany"
+                  placeholder="Enter current company"
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="totalExperience">Total Experience</label>
                 <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Enter password"
+                  type="text"
+                  name="totalExperience"
+                  id="totalExperience"
+                  placeholder="Enter total experience"
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="designation">Designation</label>
                 <input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  placeholder="Enter password again"
+                  type="text"
+                  name="designation"
+                  id="designation"
+                  placeholder="Enter designation"
                 />
               </div>
               <div className="btn-wrapper">
