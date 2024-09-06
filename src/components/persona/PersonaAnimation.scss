@@ -2,7 +2,7 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: #ededed;
+  background-color: #dae8ff;
   overflow: hidden;
   .cards-wrapper {
     position: relative;
@@ -14,6 +14,10 @@
     margin-bottom: 80px;
     padding-top: 150px;
     z-index: 5;
+
+    .box {
+      border-radius: 10px;
+    }
     .card {
       --main-color: #000;
       --bg-color: linear-gradient(
@@ -86,7 +90,7 @@
         color: #ffffff;
       }
       .card-subtitle {
-        margin-top: 15px;
+        margin-top: 10px;
         font-weight: 400;
         font-size: 15px;
         color: #ffffff;
@@ -112,7 +116,6 @@
     transform: translate(-50%, 100%);
   }
 }
-
 .desc-wrapper {
   position: relative;
   z-index: 2;
@@ -122,17 +125,18 @@
     line-height: 52px;
     color: #000000;
     text-align: center;
+    margin-bottom: 10px;
   }
   .desc {
-    max-width: 700px;
+    max-width: 580px;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 16px;
+    line-height: 24px;
     color: #000000;
     text-align: center;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
-
   button {
     --primary-color: #000000;
     --secondary-color: #fff;
@@ -159,7 +163,6 @@
     justify-content: center;
     align-items: center;
   }
-
   button .arrow {
     margin-top: 1px;
     width: var(--arrow-width);
@@ -168,7 +171,6 @@
     position: relative;
     transition: 0.2s;
   }
-
   button .arrow::before {
     content: "";
     box-sizing: border-box;
@@ -182,7 +184,6 @@
     padding: 3px;
     transform: rotate(-45deg);
   }
-
   button:hover {
     background-color: var(--hover-color);
   }
@@ -197,10 +198,11 @@
 }
 .form-container {
   width: 320px;
-  border-radius: 0.75rem;
+  border-radius: 10px;
   background-color: #111827;
   padding: 2rem;
   color: #f3f4f6;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .title {
@@ -233,11 +235,9 @@
   padding: 0.75rem 1rem;
   color: #f3f4f6;
 }
-
 .input-group input:focus {
   border-color: rgba(167, 139, 250);
 }
-
 .forgot {
   display: flex;
   justify-content: flex-end;
@@ -249,7 +249,6 @@
 .btn-wrapper {
   display: flex;
   gap: 15px;
-
   .form-btn {
     width: 100%;
     text-align: center;
@@ -260,6 +259,13 @@
     margin-top: 15px;
     &:hover {
       background-color: #7a30bf;
+    }
+
+    &.back-btn {
+      background-color: #727272bf;
+      &:hover {
+        background-color: #5f5d5dbf;
+      }
     }
   }
 }
