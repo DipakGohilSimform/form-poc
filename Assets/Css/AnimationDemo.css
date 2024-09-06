@@ -1,0 +1,98 @@
+.animated-box {
+  position: relative;
+  background: #ffffff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 12px;
+  padding: 20px;
+}
+.animated-box.box-1 {
+  transform: scale(1.2);
+}
+.animated-box.box-2 {
+  pointer-events: none;
+  opacity: 0;
+  top: -125px;
+  right: -310px !important;
+}
+.animated-box.box-3 {
+  pointer-events: none;
+  opacity: 0;
+  top: -230px;
+  right: -335px !important;
+}
+.animated-box .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.animated-box .form-wrapper .form-item {
+  position: relative;
+  min-width: 300px;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.animated-box .form-wrapper .form-item .form-item-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 5px;
+}
+.animated-box .form-wrapper .form-item .input {
+  color: #000000;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #888888;
+  border-radius: 10px;
+  outline: none;
+  caret-color: #000000;
+}
+
+.line1 {
+  position: absolute;
+  background-color: #5c5cff;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  width: 5px;
+}
+.line1 .line2 {
+  position: absolute;
+  background-color: #5c5cff;
+  height: 5px;
+  bottom: 0;
+}
+.line1 .line2 .animated-box {
+  right: 0;
+  position: absolute;
+}
+.line1 .line2 .animated-box .form-2 {
+  position: absolute;
+  right: -280px;
+}
+
+.line3 {
+  position: absolute;
+  background-color: #5c5cff;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 5px;
+}
+.line3 .line4 {
+  position: absolute;
+  background-color: #5c5cff;
+  height: 5px;
+  top: 0;
+}
+.line3 .line4 .animated-box {
+  right: 0;
+  position: absolute;
+}
+.line3 .line4 .animated-box .form-2 {
+  position: absolute;
+  right: -280px;
+}
