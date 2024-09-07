@@ -1,0 +1,104 @@
+.multi-step-form {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  .greetings-section {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .greeting-wrapper {
+      padding: 40px;
+      .title {
+        font-size: 86px;
+        font-weight: 700;
+        line-height: 96px;
+        text-align: center;
+        color: var(--clr-black);
+        margin-bottom: 20px;
+      }
+      .desc {
+        max-width: 1200px;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 38px;
+        text-align: center;
+        color: var(--clr-black);
+        margin-bottom: 30px;
+      }
+      .btn-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .bg-gradient {
+      background-image: radial-gradient(
+        circle,
+        #9b53e0,
+        #b47cea,
+        #cca4f2,
+        #e2cbf9,
+        #f9f3ff
+      );
+      position: absolute;
+      height: 300px;
+      width: 100%;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.5;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 100%);
+    }
+  }
+  .form-section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-wrapper {
+      border-radius: 10px;
+      padding: 20px;
+      background-color: var(--clr-blue);
+      .form-title {
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 56px;
+        text-align: center;
+        color: var(--clr-white);
+        margin-bottom: 20px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      .input-group label {
+        display: block;
+        color: #9ca3af;
+        margin-bottom: 4px;
+      }
+
+      .input-group input {
+        width: 400px;
+        height: 66px;
+        max-width: 100%;
+        border-radius: 10px;
+        border: 1px solid #374151;
+        outline: 0;
+        background-color: var(--clr-blue);
+        padding: 20px;
+        color: #f3f4f6;
+      }
+      .input-group input:focus {
+        border-color: rgba(167, 139, 250);
+      }
+      .form-btn {
+        width: 100%;
+      }
+    }
+  }
+}

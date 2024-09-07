@@ -1,12 +1,10 @@
-import "./App.css";
-import AnimationDemo from "./components/AnimationDemo";
-import PersonaAnimation from "./components/persona/PersonaAnimation";
+import MultiStepForm from "./components/multi-step-form/MultiStepForm";
 
 function App() {
   return (
     <>
       <div className="main">
-        <PersonaAnimation />
+        <MultiStepForm />
       </div>
     </>
   );

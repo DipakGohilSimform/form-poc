@@ -1,0 +1,28 @@
+.btn {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--clr-primary-1);
+  color: var(--clr-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--clr-primary-2);
+}
+
+.btn-secondary {
+  background-color: var(--clr-secondary-1);
+  border: 1px soild var(--clr-black);
+  color: var(--clr-white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--clr-secondary-2);
+}
