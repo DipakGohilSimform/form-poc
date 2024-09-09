@@ -19,6 +19,7 @@ function MultiStepForm() {
   const formRef1 = useRef(null);
   const formRef2 = useRef(null);
   const formRef3 = useRef(null);
+  const endGreetingRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -67,7 +68,7 @@ function MultiStepForm() {
         formRef1.current,
         {
           scale: 1.1,
-          y: "20",
+          y: "0",
           zIndex: 5,
           boxShadow:
             "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
@@ -99,7 +100,7 @@ function MultiStepForm() {
           zIndex: 1,
           boxShadow: "none",
           opacity: 0.5,
-          duration: 0.6,
+          duration: 0.5,
           filter: "blur(3px)",
         },
         0
@@ -111,10 +112,10 @@ function MultiStepForm() {
             y: "-650",
             zIndex: 5,
             opacity: 1,
-            duration: 0.6,
+            duration: 0.5,
             filter: "blur(0)",
             boxShadow:
-              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
           },
           0
         )
@@ -135,7 +136,7 @@ function MultiStepForm() {
           boxShadow: "none",
           filter: "blur(3px)",
           opacity: 0.5,
-          duration: 0.6,
+          duration: 0.5,
         },
         0
       )
@@ -143,13 +144,13 @@ function MultiStepForm() {
           formRef3.current,
           {
             scale: 1.1,
-            y: "-1320",
+            y: "-1300",
             zIndex: 5,
             opacity: 1,
-            duration: 0.6,
+            duration: 0.5,
             filter: "blur(0)",
             boxShadow:
-              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
           },
           0
         )
@@ -159,9 +160,38 @@ function MultiStepForm() {
             y: "-800",
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.6,
+            duration: 0.5,
             filter: "blur(2)",
             boxShadow: "none",
+          },
+          0
+        );
+    } else if (currentStep === 3) {
+      tl.to(
+        formRef2.current,
+        {
+          y: "-1500",
+        },
+        0
+      )
+        .to(
+          formRef3.current,
+          {
+            y: "-2000",
+            scale: 0.8,
+            zIndex: 1,
+            boxShadow: "none",
+            filter: "blur(3px)",
+            opacity: 0.5,
+            duration: 0.5,
+          },
+          0
+        )
+        .to(
+          endGreetingRef.current,
+          {
+            y: "-2000",
+            duration: 0.5,
           },
           0
         );
@@ -181,7 +211,7 @@ function MultiStepForm() {
           y: "-100", // Moves formRef2 upwards before returning formRef1
           zIndex: 1,
           opacity: 0.5,
-          duration: 0.6,
+          duration: 0.5,
           boxShadow: "none",
           filter: "blur(3px)",
         },
@@ -191,12 +221,12 @@ function MultiStepForm() {
           formRef1.current,
           {
             scale: 1.1,
-            y: "30", // Brings formRef1 back into view
+            y: "0", // Brings formRef1 back into view
             zIndex: 5,
             opacity: 1,
-            duration: 0.6,
+            duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             filter: "blur(0)",
           },
           0
@@ -208,7 +238,7 @@ function MultiStepForm() {
             y: "800", // Brings formRef1 back into view
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.6,
+            duration: 0.5,
             boxShadow: "none",
             filter: "blur(2)",
           },
@@ -223,7 +253,7 @@ function MultiStepForm() {
           y: "-830px", // Moves formRef3 upwards before returning formRef2
           zIndex: 1,
           opacity: 0.5,
-          duration: 0.6,
+          duration: 0.5,
           boxShadow: "none",
           filter: "blur(3px)",
         },
@@ -236,9 +266,9 @@ function MultiStepForm() {
             y: "-650",
             zIndex: 5,
             opacity: 1,
-            duration: 0.6,
+            duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             filter: "blur(0)",
           },
           0
@@ -250,9 +280,9 @@ function MultiStepForm() {
             y: "-325",
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.6,
+            duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
             filter: "blur(3px)",
           },
           0
@@ -322,10 +352,6 @@ function MultiStepForm() {
                 <Location />
                 100 smith street, Collingwood NSW 3066
               </a>
-              <a href="#" className="dark">
-                <Location />
-                100 smith street, Collingwood NSW 3066
-              </a>
             </div>
           </div>
           <div className="form-content">
@@ -356,80 +382,6 @@ function MultiStepForm() {
             </div>
           </div>
         </div>
-
-        {/* <div
-          className={`form-wrapper ${currentStep === 1 ? "active" : ""}`}
-          ref={formRef1}
-        >
-          <h2 className="form-title">Personal Information</h2>
-          <form className="form">
-            <div className="form-fields">
-              <div className="input-group">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  id="firstName"
-                  placeholder="Enter first name"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  id="lastName"
-                  placeholder="Enter last name"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="age">Age</label>
-                <input
-                  type="text"
-                  name="age"
-                  id="age"
-                  placeholder="Enter age"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="country">Country</label>
-                <input
-                  type="text"
-                  name="country"
-                  id="country"
-                  placeholder="Enter country"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  placeholder="Enter phone number"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="nationality">Nationality</label>
-                <input
-                  type="text"
-                  name="nationality"
-                  id="nationality"
-                  placeholder="Enter nationality"
-                />
-              </div>
-            </div>
-            <div className="btn-wrapper">
-              <Button text="Back" variant="secondary" className="form-btn" />
-              <Button
-                text="Next"
-                variant="primary"
-                className="form-btn"
-                onClick={handleNext}
-              />
-            </div>
-          </form>
-        </div> */}
 
         {/* Form 2 */}
         <div
@@ -471,10 +423,6 @@ function MultiStepForm() {
                 <Location />
                 100 smith street, Collingwood NSW 3066
               </a>
-              <a href="#" className="dark">
-                <Location />
-                100 smith street, Collingwood NSW 3066
-              </a>
             </div>
           </div>
           <div className="form-content">
@@ -486,7 +434,35 @@ function MultiStepForm() {
               <p className="content-desc">
                 Leave us your details and we&apso;ll reach out within 24 hours!.
               </p>
-              <input type="range" min="1" max="100" className="progress" />
+              <div className="form-fields">
+                <div className="input-group">
+                  <label htmlFor="firstName">First name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    placeholder="Enter first name"
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="lastName">Last name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Enter last name"
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Enter email"
+                  />
+                </div>
+              </div>
               <div className="btn-wrapper">
                 <Button
                   text="Back"
@@ -545,10 +521,6 @@ function MultiStepForm() {
                 <Location />
                 100 smith street, Collingwood NSW 3066
               </a>
-              <a href="#" className="dark">
-                <Location />
-                100 smith street, Collingwood NSW 3066
-              </a>
             </div>
           </div>
           <div className="form-content">
@@ -556,11 +528,21 @@ function MultiStepForm() {
               <div className="content-logo">
                 <Logo />
               </div>
-              <h2 className="content-title">How big is your team?</h2>
+              <h2 className="content-title">What do you need help with?</h2>
               <p className="content-desc">
-                We&apos;ve worked with small startups and fortune 500 companies.
+                We&apos;re a full service agency with experts ready to help.
               </p>
-              <input type="range" min="1" max="100" className="progress" />
+              <div className="form-fields">
+                <div className="input-group">
+                  <label htmlFor="helpMessage">How can we assist you?</label>
+                  <textarea
+                    className="help-msg"
+                    name="helpMessage"
+                    id="helpMessage"
+                    placeholder="Describe your needs"
+                  ></textarea>
+                </div>
+              </div>
               <div className="btn-wrapper">
                 <Button
                   text="Back"
@@ -569,7 +551,7 @@ function MultiStepForm() {
                   onClick={handleBack}
                 />
                 <Button
-                  text="Next"
+                  text="Finish"
                   variant="primary"
                   className="form-btn"
                   onClick={handleNext}
@@ -578,6 +560,15 @@ function MultiStepForm() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="greeting-wrapper" ref={endGreetingRef}>
+        <h1 className="title">Thank you!</h1>
+        <p className="desc">
+          Congratulations! You have successfully completed the onboarding
+          process. We're excited to have you on board and look forward to
+          working together. If you have any questions or need further
+          assistance, feel free to reach out at any time.
+        </p>
       </div>
     </main>
   );

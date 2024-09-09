@@ -16,4 +16,7 @@ body {
   --clr-black: #000000;
   --clr-white: #ffffff;
   --clr-blue: #111827;
+  --clr-gray-1: #dedede;
+  --clr-gray-2: #e9e5e5;
+  --clr-gray-3: #2e2e2e;
 }
