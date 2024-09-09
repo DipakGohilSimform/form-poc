@@ -1,10 +1,16 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import "./MultiStepForm.scss";
 import Button from "./Button/Button";
+import Logo from "../svgs/Logo";
+import Chat from "../svgs/Chat";
+import Message from "../svgs/Message";
+import Insta from "../svgs/Insta";
+import Phone from "../svgs/Phone";
+import Location from "../svgs/Location";
 
 function MultiStepForm() {
-  const [currentForm, setCurrentForm] = useState(1); // Keep track of the current form
+  const [currentStep, setCurrentStep] = useState(1);
   const greetingRef = useRef(null);
   const titleRef = useRef(null);
   const descRef = useRef(null);
@@ -18,22 +24,22 @@ function MultiStepForm() {
     const tl = gsap.timeline();
     tl.fromTo(
       titleRef.current,
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
     )
       .fromTo(
         descRef.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
-        "-=0.4"
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.3"
       )
       .fromTo(
         greetingBtnRef.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
-        "-=0.4"
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.3"
       )
-      .to(gradientRef.current, { y: 100, ease: "power1.out" }, 1);
+      .to(gradientRef.current, { y: 150, ease: "power1.out" }, 1);
   }, []);
 
   const handleGetStarted = () => {
@@ -46,11 +52,10 @@ function MultiStepForm() {
         gradientRef.current,
       ],
       {
-        y: -200,
+        y: -150,
         opacity: 0,
         duration: 0.8,
         ease: "power3.inOut",
-        stagger: 0.2,
       }
     )
       .to(greetingRef.current, {
@@ -58,12 +63,202 @@ function MultiStepForm() {
         duration: 0.8,
         ease: "power1.inOut",
       })
-      .to(formRef1.current, {
-        scale: 1.15,
-        y: "10",
-        boxShadow:
-          "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+      .to(
+        formRef1.current,
+        {
+          scale: 1.1,
+          y: "20",
+          zIndex: 5,
+          boxShadow:
+            "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+        },
+        0
+      )
+      .to(
+        formRef2.current,
+        {
+          y: "-100",
+        },
+        0
+      )
+      .to([formRef2.current, formRef3.current], {
+        opacity: 0.5,
+        filter: "blur(3px)",
       });
+  };
+
+  // Handle Next Button
+  const handleNext = () => {
+    const tl = gsap.timeline();
+    if (currentStep === 1) {
+      tl.to(
+        formRef1.current,
+        {
+          scale: 0.8,
+          y: "-380",
+          zIndex: 1,
+          boxShadow: "none",
+          opacity: 0.5,
+          duration: 0.6,
+          filter: "blur(3px)",
+        },
+        0
+      )
+        .to(
+          formRef2.current,
+          {
+            scale: 1.1,
+            y: "-650",
+            zIndex: 5,
+            opacity: 1,
+            duration: 0.6,
+            filter: "blur(0)",
+            boxShadow:
+              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+          },
+          0
+        )
+        .to(
+          formRef3.current,
+          {
+            y: "-830",
+          },
+          0
+        );
+    } else if (currentStep === 2) {
+      tl.to(
+        formRef2.current,
+        {
+          scale: 0.8,
+          y: "-1000",
+          zIndex: 1,
+          boxShadow: "none",
+          filter: "blur(3px)",
+          opacity: 0.5,
+          duration: 0.6,
+        },
+        0
+      )
+        .to(
+          formRef3.current,
+          {
+            scale: 1.1,
+            y: "-1320",
+            zIndex: 5,
+            opacity: 1,
+            duration: 0.6,
+            filter: "blur(0)",
+            boxShadow:
+              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+          },
+          0
+        )
+        .to(
+          formRef1.current,
+          {
+            y: "-800",
+            zIndex: 1,
+            opacity: 0.5,
+            duration: 0.6,
+            filter: "blur(2)",
+            boxShadow: "none",
+          },
+          0
+        );
+    }
+    setCurrentStep(currentStep + 1);
+  };
+
+  // Handle Back Button
+  const handleBack = () => {
+    const tl = gsap.timeline();
+    if (currentStep === 2) {
+      // Returning from Form 2 to Form 1
+      tl.to(
+        formRef2.current,
+        {
+          scale: 0.8,
+          y: "-100", // Moves formRef2 upwards before returning formRef1
+          zIndex: 1,
+          opacity: 0.5,
+          duration: 0.6,
+          boxShadow: "none",
+          filter: "blur(3px)",
+        },
+        0
+      )
+        .to(
+          formRef1.current,
+          {
+            scale: 1.1,
+            y: "30", // Brings formRef1 back into view
+            zIndex: 5,
+            opacity: 1,
+            duration: 0.6,
+            boxShadow:
+              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+            filter: "blur(0)",
+          },
+          0
+        )
+        .to(
+          formRef3.current,
+          {
+            scale: 0.8,
+            y: "800", // Brings formRef1 back into view
+            zIndex: 1,
+            opacity: 0.5,
+            duration: 0.6,
+            boxShadow: "none",
+            filter: "blur(2)",
+          },
+          0
+        );
+    } else if (currentStep === 3) {
+      // Returning from Form 3 to Form 2
+      tl.to(
+        formRef3.current,
+        {
+          scale: 0.8,
+          y: "-830px", // Moves formRef3 upwards before returning formRef2
+          zIndex: 1,
+          opacity: 0.5,
+          duration: 0.6,
+          boxShadow: "none",
+          filter: "blur(3px)",
+        },
+        0
+      )
+        .to(
+          formRef2.current,
+          {
+            scale: 1.1,
+            y: "-650",
+            zIndex: 5,
+            opacity: 1,
+            duration: 0.6,
+            boxShadow:
+              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+            filter: "blur(0)",
+          },
+          0
+        )
+        .to(
+          formRef1.current,
+          {
+            scale: 0.8,
+            y: "-325",
+            zIndex: 1,
+            opacity: 0.5,
+            duration: 0.6,
+            boxShadow:
+              "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+            filter: "blur(3px)",
+          },
+          0
+        );
+    }
+    setCurrentStep(currentStep - 1);
   };
 
   return (
@@ -75,7 +270,7 @@ function MultiStepForm() {
           </h1>
           <p className="desc" ref={descRef}>
             This form will guide you through a few simple steps to help us get
-            to know you better. Let's begin your journey with us!
+            to know you better. Let&apos;s begin your journey with us!
           </p>
           <div className="btn-wrapper" ref={greetingBtnRef}>
             <Button variant="primary" onClick={handleGetStarted}>
@@ -85,205 +280,305 @@ function MultiStepForm() {
         </div>
         <div className="bg-gradient" ref={gradientRef}></div>
       </div>
-      {currentForm === 1 && (
-        <div className="form-section">
-          <div className="form-wrapper" ref={formRef1}>
-            <h2 className="form-title">Personal Information</h2>
-            <form className="form">
-              <div className="form-fields">
-                <div className="input-group">
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    placeholder="Enter first name"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    placeholder="Enter last name"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="age">Age</label>
-                  <input
-                    type="text"
-                    name="age"
-                    id="age"
-                    placeholder="Enter age"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="country">Country</label>
-                  <input
-                    type="text"
-                    name="country"
-                    id="country"
-                    placeholder="Enter country"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="phone">Phone Number</label>
-                  <input
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    placeholder="Enter phone number"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="nationality">Nationality</label>
-                  <input
-                    type="text"
-                    name="nationality"
-                    id="nationality"
-                    placeholder="Enter nationality"
-                  />
-                </div>
-              </div>
-              <div className="btn-wrapper">
-                <Button text="Back" variant="secondary" className="form-btn" />
-                <Button text="Next" variant="primary" className="form-btn" />
-              </div>
-            </form>
+
+      <div className="form-section">
+        {/* Form 1 */}
+        <div
+          className={`form-wrapper ${currentStep === 1 ? "active" : ""}`}
+          ref={formRef1}
+        >
+          <div className="left-sidebar">
+            <h2 className="logo">
+              <Logo /> Untitled UI
+            </h2>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Chat with us</h3>
+              <p className="desc">Speak to our friendly team via live chat.</p>
+              <a href="#" className="dark">
+                <Chat />
+                Start a live chat
+              </a>
+              <a href="#" className="dark">
+                <Message />
+                Shoot us an email
+              </a>
+              <a href="#" className="dark">
+                <Insta />
+                Like us on instagram
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Call us</h3>
+              <p className="desc">Call out team Mon-Fri from 8am to 5pm.</p>
+              <a href="#" className="dark">
+                <Phone />
+                +1&nbsp;(555)&nbsp;000-0000
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Visit us</h3>
+              <p className="desc">Chat to us in person at our Melbourne HQ.</p>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+            </div>
           </div>
-          <div className="form-wrapper" ref={formRef2}>
-            <h2 className="form-title">Contact Information</h2>
-            <form className="form">
-              <div className="form-fields">
-                <div className="input-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter email address"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="confirmEmail">Confirm Email Address</label>
-                  <input
-                    type="email"
-                    name="confirmEmail"
-                    id="confirmEmail"
-                    placeholder="Confirm email address"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="address">Street Address</label>
-                  <input
-                    type="text"
-                    name="address"
-                    id="address"
-                    placeholder="Enter street address"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="city">City</label>
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    placeholder="Enter city"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="state">State/Province</label>
-                  <input
-                    type="text"
-                    name="state"
-                    id="state"
-                    placeholder="Enter state/province"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="zip">Zip/Postal Code</label>
-                  <input
-                    type="text"
-                    name="zip"
-                    id="zip"
-                    placeholder="Enter postal code"
-                  />
-                </div>
+          <div className="form-content">
+            <div className="content">
+              <div className="content-logo">
+                <Logo />
               </div>
+              <h2 className="content-title">How big is your team?</h2>
+              <p className="content-desc">
+                We&apos;ve worked with small startups and fortune 500 companies.
+              </p>
+              <h4 className="range-title">1-10 people</h4>
+              <input type="range" min="1" max="100" className="progress" />
               <div className="btn-wrapper">
-                <Button text="Back" variant="secondary" className="form-btn" />
-                <Button text="Next" variant="primary" className="form-btn" />
+                <Button
+                  text="Back"
+                  variant="secondary"
+                  className="form-btn"
+                  onClick={handleBack}
+                />
+                <Button
+                  text="Next"
+                  variant="primary"
+                  className="form-btn"
+                  onClick={handleNext}
+                />
               </div>
-            </form>
-          </div>
-          <div className="form-wrapper" ref={formRef3}>
-            <h2 className="form-title">Security & Preferences</h2>
-            <form className="form">
-              <div className="form-fields">
-                <div className="input-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Enter password"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    placeholder="Confirm password"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="securityAnswer">Security Answer</label>
-                  <input
-                    type="text"
-                    name="securityAnswer"
-                    id="securityAnswer"
-                    placeholder="Enter security answer"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="nickname">Nickname</label>
-                  <input
-                    type="text"
-                    name="nickname"
-                    id="nickname"
-                    placeholder="Enter your nickname"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="favoriteColor">Favorite Color</label>
-                  <input
-                    type="text"
-                    name="favoriteColor"
-                    id="favoriteColor"
-                    placeholder="Enter your favorite color"
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="birthPlace">Place of Birth</label>
-                  <input
-                    type="text"
-                    name="birthPlace"
-                    id="birthPlace"
-                    placeholder="Enter your place of birth"
-                  />
-                </div>
-              </div>
-              <div className="btn-wrapper">
-                <Button text="Back" variant="secondary" className="form-btn" />
-                <Button text="Next" variant="primary" className="form-btn" />
-              </div>
-            </form>
+            </div>
           </div>
         </div>
-      )}
+
+        {/* <div
+          className={`form-wrapper ${currentStep === 1 ? "active" : ""}`}
+          ref={formRef1}
+        >
+          <h2 className="form-title">Personal Information</h2>
+          <form className="form">
+            <div className="form-fields">
+              <div className="input-group">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  placeholder="Enter first name"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="Enter last name"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="age">Age</label>
+                <input
+                  type="text"
+                  name="age"
+                  id="age"
+                  placeholder="Enter age"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="country">Country</label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  placeholder="Enter country"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="Enter phone number"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="nationality">Nationality</label>
+                <input
+                  type="text"
+                  name="nationality"
+                  id="nationality"
+                  placeholder="Enter nationality"
+                />
+              </div>
+            </div>
+            <div className="btn-wrapper">
+              <Button text="Back" variant="secondary" className="form-btn" />
+              <Button
+                text="Next"
+                variant="primary"
+                className="form-btn"
+                onClick={handleNext}
+              />
+            </div>
+          </form>
+        </div> */}
+
+        {/* Form 2 */}
+        <div
+          className={`form-wrapper ${currentStep === 2 ? "active" : ""}`}
+          ref={formRef2}
+        >
+          <div className="left-sidebar">
+            <h2 className="logo">
+              <Logo /> Untitled UI
+            </h2>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Chat with us</h3>
+              <p className="desc">Speak to our friendly team via live chat.</p>
+              <a href="#" className="dark">
+                <Chat />
+                Start a live chat
+              </a>
+              <a href="#" className="dark">
+                <Message />
+                Shoot us an email
+              </a>
+              <a href="#" className="dark">
+                <Insta />
+                Like us on instagram
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Call us</h3>
+              <p className="desc">Call out team Mon-Fri from 8am to 5pm.</p>
+              <a href="#" className="dark">
+                <Phone />
+                +1&nbsp;(555)&nbsp;000-0000
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Visit us</h3>
+              <p className="desc">Chat to us in person at our Melbourne HQ.</p>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+            </div>
+          </div>
+          <div className="form-content">
+            <div className="content">
+              <div className="content-logo">
+                <Logo />
+              </div>
+              <h2 className="content-title">How do we get in touch?</h2>
+              <p className="content-desc">
+                Leave us your details and we&apso;ll reach out within 24 hours!.
+              </p>
+              <input type="range" min="1" max="100" className="progress" />
+              <div className="btn-wrapper">
+                <Button
+                  text="Back"
+                  variant="secondary"
+                  className="form-btn"
+                  onClick={handleBack}
+                />
+                <Button
+                  text="Next"
+                  variant="primary"
+                  className="form-btn"
+                  onClick={handleNext}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Form 3 */}
+        <div
+          className={`form-wrapper ${currentStep === 3 ? "active" : ""}`}
+          ref={formRef3}
+        >
+          <div className="left-sidebar">
+            <h2 className="logo">
+              <Logo /> Untitled UI
+            </h2>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Chat with us</h3>
+              <p className="desc">Speak to our friendly team via live chat.</p>
+              <a href="#" className="dark">
+                <Chat />
+                Start a live chat
+              </a>
+              <a href="#" className="dark">
+                <Message />
+                Shoot us an email
+              </a>
+              <a href="#" className="dark">
+                <Insta />
+                Like us on instagram
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Call us</h3>
+              <p className="desc">Call out team Mon-Fri from 8am to 5pm.</p>
+              <a href="#" className="dark">
+                <Phone />
+                +1&nbsp;(555)&nbsp;000-0000
+              </a>
+            </div>
+            <div className="title-wrapper">
+              <h3 className="sidebar-heading">Visit us</h3>
+              <p className="desc">Chat to us in person at our Melbourne HQ.</p>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
+            </div>
+          </div>
+          <div className="form-content">
+            <div className="content">
+              <div className="content-logo">
+                <Logo />
+              </div>
+              <h2 className="content-title">How big is your team?</h2>
+              <p className="content-desc">
+                We&apos;ve worked with small startups and fortune 500 companies.
+              </p>
+              <input type="range" min="1" max="100" className="progress" />
+              <div className="btn-wrapper">
+                <Button
+                  text="Back"
+                  variant="secondary"
+                  className="form-btn"
+                  onClick={handleBack}
+                />
+                <Button
+                  text="Next"
+                  variant="primary"
+                  className="form-btn"
+                  onClick={handleNext}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

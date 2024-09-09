@@ -6,7 +6,11 @@ const Button = ({ variant, onClick, children, text, className }) => {
   const buttonClass = variant === "primary" ? "btn-primary" : "btn-secondary";
 
   return (
-    <button className={`btn ${buttonClass} ${className}`} onClick={onClick}>
+    <button
+      type="button"
+      className={`btn ${buttonClass} ${className}`}
+      onClick={onClick}
+    >
       {children}
       {text}
     </button>
