@@ -51,7 +51,7 @@
       #f9f3ff
     );
     position: absolute;
-    height: 0;
+    height: 300px;
     width: 100%;
     border-radius: 50%;
     filter: blur(40px);
@@ -60,7 +60,6 @@
     bottom: 0;
     transform: translate(-50%, 100%);
   }
-
   .form-section {
     max-width: 1300px;
     margin: 0 auto;
@@ -159,6 +158,7 @@
             width: 100%;
             background: var(--clr-black);
             margin-bottom: 30px;
+            accent-color: var(--clr-black);
           }
           .content-logo {
             font-size: 60px;

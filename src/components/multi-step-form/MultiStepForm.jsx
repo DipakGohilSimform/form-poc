@@ -15,7 +15,6 @@ function MultiStepForm() {
   const titleRef = useRef(null);
   const descRef = useRef(null);
   const greetingBtnRef = useRef(null);
-  const gradientRef = useRef(null);
   const formRef1 = useRef(null);
   const formRef2 = useRef(null);
   const formRef3 = useRef(null);
@@ -39,31 +38,17 @@ function MultiStepForm() {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
         "-=0.3"
-      )
-      .fromTo(
-        gradientRef.current,
-        { y: 0, height: 0 },
-        { y: 100, height: 350, duration: 0.6, ease: "power1.out" },
-        1
       );
   }, []);
 
   const handleGetStarted = () => {
     const tl = gsap.timeline();
-    tl.to(
-      [
-        titleRef.current,
-        descRef.current,
-        greetingBtnRef.current,
-        gradientRef.current,
-      ],
-      {
-        y: -150,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.inOut",
-      }
-    )
+    tl.to([titleRef.current, descRef.current, greetingBtnRef.current], {
+      y: -150,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.inOut",
+    })
       .to(greetingRef.current, {
         height: 0,
         duration: 0.8,
@@ -314,7 +299,6 @@ function MultiStepForm() {
             </Button>
           </div>
         </div>
-        <div className="bg-gradient" ref={gradientRef}></div>
       </div>
 
       <div className="form-section">
