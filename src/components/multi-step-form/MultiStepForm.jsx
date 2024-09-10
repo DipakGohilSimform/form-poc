@@ -190,7 +190,7 @@ function MultiStepForm() {
         .to(
           endGreetingRef.current,
           {
-            y: "-2000",
+            y: "-1800",
             duration: 0.5,
           },
           0
@@ -565,9 +565,8 @@ function MultiStepForm() {
         <h1 className="title">Thank you!</h1>
         <p className="desc">
           Congratulations! You have successfully completed the onboarding
-          process. We're excited to have you on board and look forward to
-          working together. If you have any questions or need further
-          assistance, feel free to reach out at any time.
+          process. We&apos;re excited to have you on board and look forward to
+          working together.
         </p>
       </div>
     </main>
