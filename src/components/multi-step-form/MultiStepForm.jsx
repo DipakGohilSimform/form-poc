@@ -40,7 +40,12 @@ function MultiStepForm() {
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
         "-=0.3"
       )
-      .to(gradientRef.current, { y: 150, ease: "power1.out" }, 1);
+      .fromTo(
+        gradientRef.current,
+        { y: 0, height: 0 },
+        { y: 100, height: 350, duration: 0.6, ease: "power1.out" },
+        1
+      );
   }, []);
 
   const handleGetStarted = () => {
@@ -68,10 +73,10 @@ function MultiStepForm() {
         formRef1.current,
         {
           scale: 1.1,
-          y: "0",
+          y: "25",
           zIndex: 5,
           boxShadow:
-            "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+            "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
         },
         0
       )
@@ -115,7 +120,7 @@ function MultiStepForm() {
             duration: 0.5,
             filter: "blur(0)",
             boxShadow:
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
           },
           0
         )
@@ -150,7 +155,7 @@ function MultiStepForm() {
             duration: 0.5,
             filter: "blur(0)",
             boxShadow:
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
           },
           0
         )
@@ -227,7 +232,7 @@ function MultiStepForm() {
             opacity: 1,
             duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
             filter: "blur(0)",
           },
           0
@@ -269,7 +274,7 @@ function MultiStepForm() {
             opacity: 1,
             duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
             filter: "blur(0)",
           },
           0
@@ -283,7 +288,7 @@ function MultiStepForm() {
             opacity: 0.5,
             duration: 0.5,
             boxShadow:
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
             filter: "blur(3px)",
           },
           0
@@ -563,12 +568,18 @@ function MultiStepForm() {
         </div>
       </div>
       <div className="greeting-wrapper" ref={endGreetingRef}>
-        <h1 className="title">Thank you!</h1>
+        <h1 className="title">Congratulations!</h1>
         <p className="desc">
-          Congratulations! You have successfully completed the onboarding
-          process. We&apos;re excited to have you on board and look forward to
-          working together.
+          You have successfully completed the onboarding process. We&apos;re
+          excited to have you on board and look forward to working together.
         </p>
+        <div className="btn-wrapper">
+          <a href="/">
+            <Button type="submit" variant="primary">
+              Back to home
+            </Button>
+          </a>
+        </div>
       </div>
     </main>
   );
