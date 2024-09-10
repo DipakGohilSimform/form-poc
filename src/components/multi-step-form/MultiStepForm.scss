@@ -8,9 +8,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+  }
+  .mouse-follower {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--clr-purple);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
   }
   .greeting-wrapper {
+    position: relative;
     padding: 40px;
+    z-index: 2;
     .title-with-emoji {
       display: flex;
       align-items: center;

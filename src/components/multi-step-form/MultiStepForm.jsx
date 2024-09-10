@@ -19,6 +19,30 @@ function MultiStepForm() {
   const formRef2 = useRef(null);
   const formRef3 = useRef(null);
   const endGreetingRef = useRef(null);
+  const followerRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize the follower with GSAP
+    const follower = followerRef.current;
+    gsap.set(follower, { xPercent: -50, yPercent: -50, ease: "power1.out" }); // Centers the follower
+
+    const moveFollower = (e) => {
+      // Move the follower to the mouse coordinates with GSAP
+      gsap.to(follower, {
+        x: e.clientX,
+        y: e.clientY,
+        ease: "power1.out",
+        duration: 0.3, // Smooth following effect
+      });
+    };
+
+    window.addEventListener("mousemove", moveFollower);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("mousemove", moveFollower);
+    };
+  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -47,7 +71,7 @@ function MultiStepForm() {
       y: -150,
       opacity: 0,
       duration: 0.8,
-      ease: "power3.inOut",
+      ease: "power3.in",
     })
       .to(greetingRef.current, {
         height: 0,
@@ -62,19 +86,22 @@ function MultiStepForm() {
           zIndex: 5,
           boxShadow:
             "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+          ease: "power1.inOut",
         },
+
         0
       )
       .to(
         formRef2.current,
         {
           y: "-100",
+          ease: "power1.inOut",
         },
         0
       )
       .to([formRef2.current, formRef3.current], {
         opacity: 0.5,
-        filter: "blur(3px)",
+        // filter: "blur(2px)",
       });
   };
 
@@ -90,8 +117,9 @@ function MultiStepForm() {
           zIndex: 1,
           boxShadow: "none",
           opacity: 0.5,
-          duration: 0.5,
-          filter: "blur(3px)",
+          duration: 0.65,
+          // filter: "blur(2px)",
+          ease: "power1.inOut",
         },
         0
       )
@@ -102,10 +130,11 @@ function MultiStepForm() {
             y: "-650",
             zIndex: 5,
             opacity: 1,
-            duration: 0.5,
+            duration: 0.65,
             filter: "blur(0)",
             boxShadow:
               "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+            ease: "power1.inOut",
           },
           0
         )
@@ -113,6 +142,7 @@ function MultiStepForm() {
           formRef3.current,
           {
             y: "-830",
+            ease: "power1.inOut",
           },
           0
         );
@@ -124,9 +154,10 @@ function MultiStepForm() {
           y: "-1000",
           zIndex: 1,
           boxShadow: "none",
-          filter: "blur(3px)",
+          // filter: "blur(2px)",
           opacity: 0.5,
-          duration: 0.5,
+          duration: 0.65,
+          ease: "power1.inOut",
         },
         0
       )
@@ -137,10 +168,11 @@ function MultiStepForm() {
             y: "-1300",
             zIndex: 5,
             opacity: 1,
-            duration: 0.5,
+            duration: 0.65,
             filter: "blur(0)",
             boxShadow:
               "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+            ease: "power1.inOut",
           },
           0
         )
@@ -150,9 +182,10 @@ function MultiStepForm() {
             y: "-800",
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.5,
+            duration: 0.65,
             filter: "blur(2)",
             boxShadow: "none",
+            ease: "power1.inOut",
           },
           0
         );
@@ -161,6 +194,7 @@ function MultiStepForm() {
         formRef2.current,
         {
           y: "-1500",
+          ease: "power1.inOut",
         },
         0
       )
@@ -171,9 +205,10 @@ function MultiStepForm() {
             scale: 0.8,
             zIndex: 1,
             boxShadow: "none",
-            filter: "blur(3px)",
+            // filter: "blur(2px)",
             opacity: 0.5,
-            duration: 0.5,
+            duration: 0.65,
+            ease: "power1.inOut",
           },
           0
         )
@@ -181,7 +216,7 @@ function MultiStepForm() {
           endGreetingRef.current,
           {
             y: "-1800",
-            duration: 0.6,
+            duration: 0.8,
             ease: "power1.out",
           },
           0
@@ -202,9 +237,10 @@ function MultiStepForm() {
           y: "-100", // Moves formRef2 upwards before returning formRef1
           zIndex: 1,
           opacity: 0.5,
-          duration: 0.5,
+          duration: 0.65,
           boxShadow: "none",
-          filter: "blur(3px)",
+          ease: "power1.inOut",
+          // filter: "blur(2px)",
         },
         0
       )
@@ -215,10 +251,11 @@ function MultiStepForm() {
             y: "0", // Brings formRef1 back into view
             zIndex: 5,
             opacity: 1,
-            duration: 0.5,
+            duration: 0.65,
             boxShadow:
               "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
             filter: "blur(0)",
+            ease: "power1.inOut",
           },
           0
         )
@@ -229,9 +266,10 @@ function MultiStepForm() {
             y: "800", // Brings formRef1 back into view
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.5,
+            duration: 0.65,
             boxShadow: "none",
             filter: "blur(2)",
+            ease: "power1.inOut",
           },
           0
         );
@@ -244,9 +282,10 @@ function MultiStepForm() {
           y: "-830px", // Moves formRef3 upwards before returning formRef2
           zIndex: 1,
           opacity: 0.5,
-          duration: 0.5,
+          duration: 0.65,
           boxShadow: "none",
-          filter: "blur(3px)",
+          // filter: "blur(2px)",
+          ease: "power1.inOut",
         },
         0
       )
@@ -257,10 +296,11 @@ function MultiStepForm() {
             y: "-650",
             zIndex: 5,
             opacity: 1,
-            duration: 0.5,
+            duration: 0.65,
             boxShadow:
               "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
             filter: "blur(0)",
+            ease: "power1.inOut",
           },
           0
         )
@@ -271,10 +311,11 @@ function MultiStepForm() {
             y: "-325",
             zIndex: 1,
             opacity: 0.5,
-            duration: 0.5,
+            duration: 0.65,
             boxShadow:
               "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
-            filter: "blur(3px)",
+            // filter: "blur(2px)",
+            ease: "power1.inOut",
           },
           0
         );
@@ -299,6 +340,7 @@ function MultiStepForm() {
             </Button>
           </div>
         </div>
+        <div ref={followerRef} className="mouse-follower" />
       </div>
 
       <div className="form-section">
