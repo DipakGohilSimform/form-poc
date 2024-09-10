@@ -191,7 +191,8 @@ function MultiStepForm() {
           endGreetingRef.current,
           {
             y: "-1800",
-            duration: 0.5,
+            duration: 0.6,
+            ease: "power1.out",
           },
           0
         );

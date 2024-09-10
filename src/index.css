@@ -13,10 +13,12 @@ body {
   --clr-primary-2: #7a30bf;
   --clr-secondary-1: #727272bf;
   --clr-secondary-2: #5f5d5dbf;
+  --clr-blue-1: #111827;
+  --clr-blue-2: #00008b;
+  --clr-purple: #9932cc;
   --clr-black: #000000;
   --clr-white: #ffffff;
-  --clr-blue: #111827;
-  --clr-gray-1: #dedede;
+  --clr-gray-1: #FAFAFA;
   --clr-gray-2: #e9e5e5;
   --clr-gray-3: #2e2e2e;
 }
