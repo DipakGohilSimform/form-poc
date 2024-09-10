@@ -357,12 +357,6 @@ function MultiStepForm() {
               <input type="range" min="1" max="100" className="progress" />
               <div className="btn-wrapper">
                 <Button
-                  text="Back"
-                  variant="secondary"
-                  className="form-btn"
-                  onClick={handleBack}
-                />
-                <Button
                   text="Next"
                   variant="primary"
                   className="form-btn"
@@ -552,7 +546,10 @@ function MultiStepForm() {
         </div>
       </div>
       <div className="greeting-wrapper" ref={endGreetingRef}>
-        <h1 className="title">Congratulations!</h1>
+        <div className="title-with-emoji">
+          <h1 className="title">Congratulations!</h1>
+          <span className="emoji">🎉</span>
+        </div>
         <p className="desc">
           You have successfully completed the onboarding process. We&apos;re
           excited to have you on board and look forward to working together.

@@ -11,6 +11,17 @@
   }
   .greeting-wrapper {
     padding: 40px;
+    .title-with-emoji {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      .emoji {
+        font-size: 60px;
+        top: -10px;
+        position: relative;
+      }
+    }
     .title {
       font-size: 86px;
       font-weight: 700;
