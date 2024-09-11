@@ -24,30 +24,31 @@ function MultiStepForm() {
   const highlightRef1 = useRef(null);
   const highlightRef2 = useRef(null);
   const highlightRef3 = useRef(null);
+  const highlightRef4 = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
       titleRef.current,
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" }
     )
       .fromTo(
         descRef.current,
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" },
         "-=0.3"
       )
       .fromTo(
         greetingBtnRef.current,
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" },
         "-=0.3"
       )
       .fromTo(
         [highlightRef1.current, highlightRef2.current],
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" },
         "-=0.3"
       )
       .fromTo(
@@ -224,7 +225,7 @@ function MultiStepForm() {
         .to(
           endGreetingRef.current,
           {
-            y: "-1800",
+            y: "-2050",
             duration: 0.8,
             ease: "power1.out",
           },
@@ -241,6 +242,12 @@ function MultiStepForm() {
             duration: 1,
             repeat: -1,
           }
+        )
+        .fromTo(
+          [highlightRef4.current],
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1 },
+          0
         );
     }
     setCurrentStep(currentStep + 1);
@@ -421,7 +428,13 @@ function MultiStepForm() {
                 We&apos;ve worked with small startups and fortune 500 companies.
               </p>
               <h4 className="range-title">1-10 people</h4>
-              <input type="range" min="1" max="100" className="progress" />
+              <input
+                type="range"
+                value={20}
+                min="1"
+                max="100"
+                className="progress"
+              />
               <div className="btn-wrapper">
                 <Button
                   text="Next"
@@ -612,7 +625,7 @@ function MultiStepForm() {
           </div>
         </div>
       </div>
-      <div className="greeting-wrapper" ref={endGreetingRef}>
+      <div className="greeting-wrapper end" ref={endGreetingRef}>
         <div className="title-with-emoji">
           <h1 className="title">
             Congratulations!
@@ -631,6 +644,9 @@ function MultiStepForm() {
               Back to home
             </Button>
           </a>
+        </div>
+        <div className="left-highlight" ref={highlightRef4}>
+          <Swirl />
         </div>
       </div>
     </main>
