@@ -8,6 +8,8 @@ import Message from "../svgs/Message";
 import Insta from "../svgs/Insta";
 import Phone from "../svgs/Phone";
 import Location from "../svgs/Location";
+import Highlight from "../svgs/Highlight";
+import Swirl from "../svgs/Swirl";
 
 function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -19,30 +21,9 @@ function MultiStepForm() {
   const formRef2 = useRef(null);
   const formRef3 = useRef(null);
   const endGreetingRef = useRef(null);
-  const followerRef = useRef(null);
-
-  useEffect(() => {
-    // Initialize the follower with GSAP
-    const follower = followerRef.current;
-    gsap.set(follower, { xPercent: -50, yPercent: -50, ease: "power1.out" }); // Centers the follower
-
-    const moveFollower = (e) => {
-      // Move the follower to the mouse coordinates with GSAP
-      gsap.to(follower, {
-        x: e.clientX,
-        y: e.clientY,
-        ease: "power1.out",
-        duration: 0.3, // Smooth following effect
-      });
-    };
-
-    window.addEventListener("mousemove", moveFollower);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("mousemove", moveFollower);
-    };
-  }, []);
+  const highlightRef1 = useRef(null);
+  const highlightRef2 = useRef(null);
+  const highlightRef3 = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -62,17 +43,45 @@ function MultiStepForm() {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
         "-=0.3"
+      )
+      .fromTo(
+        [highlightRef1.current, highlightRef2.current],
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.3"
+      )
+      .fromTo(
+        [highlightRef1.current],
+        { rotate: 4, scale: 0.7 },
+        {
+          scale: 0.7,
+          rotate: -4,
+          ease: "power1.inOut",
+          yoyo: true,
+          duration: 1,
+          repeat: -1,
+        },
+        "-=0.3"
       );
   }, []);
 
   const handleGetStarted = () => {
     const tl = gsap.timeline();
-    tl.to([titleRef.current, descRef.current, greetingBtnRef.current], {
-      y: -150,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.in",
-    })
+    tl.to(
+      [
+        titleRef.current,
+        descRef.current,
+        greetingBtnRef.current,
+        highlightRef1.current,
+        highlightRef2.current,
+      ],
+      {
+        y: -150,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.in",
+      }
+    )
       .to(greetingRef.current, {
         height: 0,
         duration: 0.8,
@@ -339,10 +348,14 @@ function MultiStepForm() {
               Get Started Now
             </Button>
           </div>
+          <div className="right-highlight" ref={highlightRef1}>
+            <Highlight />
+          </div>
         </div>
-        <div ref={followerRef} className="mouse-follower" />
+        <div className="left-highlight" ref={highlightRef2}>
+          <Swirl />
+        </div>
       </div>
-
       <div className="form-section">
         {/* Form 1 */}
         <div
@@ -589,8 +602,12 @@ function MultiStepForm() {
       </div>
       <div className="greeting-wrapper" ref={endGreetingRef}>
         <div className="title-with-emoji">
-          <h1 className="title">Congratulations!</h1>
-          <span className="emoji">🎉</span>
+          <h1 className="title">
+            Congratulations!
+            <span className="right-highlight" ref={highlightRef3}>
+              <img src="" alt="" />
+            </span>
+          </h1>
         </div>
         <p className="desc">
           You have successfully completed the onboarding process. We&apos;re
