@@ -225,7 +225,7 @@ function MultiStepForm() {
         .to(
           endGreetingRef.current,
           {
-            y: "-2050",
+            y: "-2070",
             duration: 0.8,
             ease: "power1.out",
           },
@@ -416,6 +416,10 @@ function MultiStepForm() {
                 <Location />
                 100 smith street, Collingwood NSW 3066
               </a>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
             </div>
           </div>
           <div className="form-content">
@@ -483,6 +487,10 @@ function MultiStepForm() {
             <div className="title-wrapper">
               <h3 className="sidebar-heading">Visit us</h3>
               <p className="desc">Chat to us in person at our Melbourne HQ.</p>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
               <a href="#" className="dark">
                 <Location />
                 100 smith street, Collingwood NSW 3066
@@ -581,6 +589,10 @@ function MultiStepForm() {
             <div className="title-wrapper">
               <h3 className="sidebar-heading">Visit us</h3>
               <p className="desc">Chat to us in person at our Melbourne HQ.</p>
+              <a href="#" className="dark">
+                <Location />
+                100 smith street, Collingwood NSW 3066
+              </a>
               <a href="#" className="dark">
                 <Location />
                 100 smith street, Collingwood NSW 3066
