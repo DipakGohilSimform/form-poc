@@ -229,6 +229,18 @@ function MultiStepForm() {
             ease: "power1.out",
           },
           0
+        )
+        .fromTo(
+          [highlightRef3.current],
+          { rotate: 4, scale: 0.7 },
+          {
+            scale: 0.7,
+            rotate: -4,
+            ease: "power1.inOut",
+            yoyo: true,
+            duration: 1,
+            repeat: -1,
+          }
         );
     }
     setCurrentStep(currentStep + 1);
@@ -604,9 +616,9 @@ function MultiStepForm() {
         <div className="title-with-emoji">
           <h1 className="title">
             Congratulations!
-            <span className="right-highlight" ref={highlightRef3}>
-              <img src="" alt="" />
-            </span>
+            <div className="right-highlight" ref={highlightRef3}>
+              <Highlight />
+            </div>
           </h1>
         </div>
         <p className="desc">
