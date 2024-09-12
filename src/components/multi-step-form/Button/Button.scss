@@ -10,12 +10,22 @@
 }
 
 .btn-primary {
-  background-color: var(--clr-black);
+  // background-color: var(--clr-black);
+  background-image: linear-gradient(
+    to right top,
+    #b95cff,
+    #a852fe,
+    #9549fe,
+    #7e41fe,
+    #633afe
+  );
   color: var(--clr-white);
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: var(--clr-gray-3);
+  transition: all 0.3s ease;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .btn-secondary {

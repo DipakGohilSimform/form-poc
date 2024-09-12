@@ -432,13 +432,7 @@ function MultiStepForm() {
                 We&apos;ve worked with small startups and fortune 500 companies.
               </p>
               <h4 className="range-title">1-10 people</h4>
-              <input
-                type="range"
-                value={20}
-                min="1"
-                max="100"
-                className="progress"
-              />
+              <input type="range" min="1" max="100" className="progress" />
               <div className="btn-wrapper">
                 <Button
                   text="Next"
