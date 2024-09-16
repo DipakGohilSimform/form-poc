@@ -10,6 +10,7 @@ import Phone from "../svgs/Phone";
 import Location from "../svgs/Location";
 import Highlight from "../svgs/Highlight";
 import Swirl from "../svgs/Swirl";
+import ParticlesBackground from "./ParticlesBackground/ParticlesBackground";
 
 function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -353,6 +354,7 @@ function MultiStepForm() {
 
   return (
     <main className="multi-step-form">
+      <ParticlesBackground />
       <div className="greetings-section" ref={greetingRef}>
         <div className="greeting-wrapper">
           <h1 className="title" ref={titleRef}>
