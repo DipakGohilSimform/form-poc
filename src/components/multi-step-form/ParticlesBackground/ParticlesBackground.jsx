@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./ParticlesBackground.scss"; // Include the corresponding CSS styles
+import "./ParticlesBackground.scss";
 
 const ParticlesBackground = () => {
   useEffect(() => {
