@@ -18,21 +18,22 @@
     #7e41fe,
     #633afe
   );
+  background-size: 200%;
+  background-position: right top;
   color: var(--clr-white);
-  transition: all 0.3s ease;
+  transition: background-position 0.3s ease;
 }
 
 .btn-primary:hover {
-  transition: all 0.3s ease;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-position: left top;
 }
 
 .btn-secondary {
   background-color: var(--clr-white);
-  border: 1px solid var(--clr-gray-4);
-  color: var(--clr-black);
+  border: 1px solid #b95cff;
+  color: #b95cff;
 }
 
 .btn-secondary:hover {
-  background-color: var(--clr-gray-2);
+  background-color: #f2e2ff;
 }
