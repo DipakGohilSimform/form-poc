@@ -96,7 +96,7 @@ function MultiStepForm() {
           y: "25",
           zIndex: 5,
           boxShadow:
-            "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+            "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
           ease: "power1.inOut",
         },
 
@@ -144,7 +144,7 @@ function MultiStepForm() {
             duration: 0.65,
             filter: "blur(0)",
             boxShadow:
-              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+              "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
             ease: "power1.inOut",
           },
           0
@@ -182,7 +182,7 @@ function MultiStepForm() {
             duration: 0.65,
             filter: "blur(0)",
             boxShadow:
-              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+              "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
             ease: "power1.inOut",
           },
           0
@@ -282,7 +282,7 @@ function MultiStepForm() {
             opacity: 1,
             duration: 0.65,
             boxShadow:
-              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+              "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
             filter: "blur(0)",
             ease: "power1.inOut",
           },
@@ -327,7 +327,7 @@ function MultiStepForm() {
             opacity: 1,
             duration: 0.65,
             boxShadow:
-              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+              "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
             filter: "blur(0)",
             ease: "power1.inOut",
           },
@@ -342,7 +342,7 @@ function MultiStepForm() {
             opacity: 0.5,
             duration: 0.65,
             boxShadow:
-              "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+              "rgba(255, 255, 255, 0.6) 0px 1px 0px, rgba(255, 255, 255, 0.6) 0px 0px 10px",
             // filter: "blur(2px)",
             ease: "power1.inOut",
           },
@@ -372,9 +372,6 @@ function MultiStepForm() {
           <div className="right-highlight" ref={highlightRef1}>
             <Highlight />
           </div>
-        </div>
-        <div className="left-highlight" ref={highlightRef2}>
-          <Swirl />
         </div>
       </div>
       <div className="form-section">
@@ -652,9 +649,6 @@ function MultiStepForm() {
               Back to home
             </Button>
           </a>
-        </div>
-        <div className="left-highlight" ref={highlightRef4}>
-          <Swirl />
         </div>
       </div>
     </main>
